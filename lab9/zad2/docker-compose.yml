@@ -1,0 +1,14 @@
+version: "3"
+services:
+  db:
+    image: mongo:4.4.6
+    platform: linux/amd64
+    ports:
+      - "27017:27017"
+  web:
+    build: ./api
+    ports:
+      - "3000:3000"
+    platform: linux/arm64
+    depends_on:
+      - db
